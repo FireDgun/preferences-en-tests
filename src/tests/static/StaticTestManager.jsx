@@ -40,11 +40,6 @@ export default function StaticTestManager({ couples }) {
   const { user, setUser } = useUser();
   const navigate = useNavigate();
   const choosePrize = (choices) => {
-    let rnd = Math.floor((Math.random() - 0.01) * (choices.length + 5));
-    if (rnd < 5) {
-      return user.preferencesStage1[rnd].win;
-    }
-
     return choices[getRandomWeighted()];
   };
 

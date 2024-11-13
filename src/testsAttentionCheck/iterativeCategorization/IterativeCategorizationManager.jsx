@@ -107,12 +107,8 @@ export default function IterativeCategorizationManager({
   ]);
 
   const choosePrize = (choices) => {
-    let rnd = Math.floor((Math.random() - 0.01) * (choices.length + 5));
-    if (rnd < 5) {
-      return user.preferencesStage1[rnd].win;
-    }
-
-    return OPTIONS_NAME["OPTION" + choices[rnd - 5]];
+    let rnd = Math.floor(Math.random() * choices.length);
+    return OPTIONS_NAME["OPTION" + choices[rnd]];
   };
 
   const handleFinishCategorization = (goodProducts, notGoodProducts) => {

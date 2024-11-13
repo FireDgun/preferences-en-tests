@@ -38,13 +38,8 @@ export default function RemoveTheWorstTest({ couples }) {
       setTimeTaken(Date.now());
     }
     const choosePrize = (choices) => {
-      let rnd = Math.floor((Math.random() - 0.01) * (choices.length + 5)); //11
-      if (rnd < 5) {
-        return user.preferencesStage1[rnd].win;
-      }
-      let temp = rnd - 5;
-      let rnd2 = Math.floor((Math.random() - 0.01) * temp);
-      return choices[rnd2];
+      let rnd = Math.floor(Math.random() * choices.length);
+      return choices[rnd];
     };
 
     const handleDone = async () => {

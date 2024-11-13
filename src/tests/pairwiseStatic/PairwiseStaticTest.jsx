@@ -164,7 +164,7 @@ export default function PairwiseStaticTest({ couples }) {
     }
   };
   const choosePrize = (choices) => {
-    let rnd = Math.floor((Math.random() - 0.01) * choices.length);
+    let rnd = Math.floor(Math.random() * choices.length);
     return choices[rnd].win;
   };
   useEffect(() => {
@@ -188,7 +188,7 @@ export default function PairwiseStaticTest({ couples }) {
       const transitivityResult = sumMainDiagonal(X);
       let timeTakenCalculation = (Date.now() - startTime) / 1000;
       let stage2Timestamp = Date.now();
-      let prize = choosePrize([...choise, ...user.preferencesStage1]);
+      let prize = choosePrize([...choise]);
       await setUserOnDb({
         ...user,
         preferencesStage2Choises: choise,

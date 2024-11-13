@@ -68,7 +68,7 @@ export default function TopDownTest({ couples }) {
     setChoiseTimeTaken(Date.now());
   };
   const choosePrize = (choices) => {
-    let rnd = Math.floor((Math.random() - 0.01) * choices.length);
+    let rnd = Math.floor(Math.random() * choices.length);
     return choices[rnd].win;
   };
   const handleDone = useCallback(async () => {
@@ -76,7 +76,7 @@ export default function TopDownTest({ couples }) {
     productsNames = productsNames.toReversed();
     let timeTakenCalculation = (Date.now() - timeTaken) / 1000;
     let stage2Timestamp = Date.now();
-    let prize = choosePrize([...choise, ...user.preferencesStage1]);
+    let prize = choosePrize([...choise]);
 
     await setUserOnDb({
       ...user,

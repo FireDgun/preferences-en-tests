@@ -70,8 +70,8 @@ export default function BottomUpTest({ couples }) {
   };
 
   const choosePrize = (choices) => {
-    let rnd = Math.floor((Math.random() - 0.01) * choices.length);
-    return choices[rnd].win;
+    let rnd = Math.floor(Math.random() * choices.length);
+    return choices[rnd]?.win;
   };
 
   useEffect(() => {
@@ -82,7 +82,7 @@ export default function BottomUpTest({ couples }) {
       let productsNames = handleProductNames(productsRank);
       let timeTakenCalculation = (Date.now() - timeTaken) / 1000;
       let stage2Timestamp = Date.now();
-      let prize = choosePrize([...choise, ...user.preferencesStage1]);
+      let prize = choosePrize([...choise]);
 
       await setUserOnDb({
         ...user,
