@@ -9,6 +9,8 @@ import { setUserOnDb } from "../../auth/authService";
 import { useUser } from "../../providers/UserProvider";
 import { useShowBlackScreenForPeriodOfTime } from "../../providers/ShowBlackScreenForPeriodOfTimeProvider";
 import DesignedButton from "../components/DesignedButton";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../../routes/routesModel";
 // function shuffleAndGroup(arr) {
 //   // Flatten the array
 //   const flatArray = arr.flat();
@@ -54,6 +56,7 @@ export default function SimplePreferencesTest() {
   const showBlackScreenForPeriodOfTime = useShowBlackScreenForPeriodOfTime();
   const { user, setUser } = useUser();
   const [group1Couples, setGroup1Couples] = useState([]);
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (user) {
@@ -105,9 +108,8 @@ export default function SimplePreferencesTest() {
       stage: 2,
       stage1Timestamp: now,
     }));
-    window.location.href =
-      "https://app.prolific.com/submissions/complete?cc=CBY30PGJ";
-  }, [choise, setUser, user]);
+    navigate(ROUTES.TEST_STAGE_ONE_FINISH);
+  }, [choise, setUser, user, navigate]);
 
   useEffect(() => {
     if (coupleIndex === group1Couples.length && group1Couples.length > 0) {

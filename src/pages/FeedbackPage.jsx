@@ -11,6 +11,8 @@ import {
   Select,
   MenuItem,
 } from "@mui/material";
+import { useNavigate } from "react-router-dom";
+import ROUTES from "../routes/routesModel";
 
 export default function FeedbackPage() {
   const [feedback, setFeedback] = useState("");
@@ -19,6 +21,7 @@ export default function FeedbackPage() {
   const [adhd, setAdhd] = useState("");
   const [attention, setAttention] = useState("");
   const { user, setUser } = useUser();
+  const navigate = useNavigate();
 
   const handleDone = useCallback(async () => {
     await setUserOnDb({
@@ -39,9 +42,8 @@ export default function FeedbackPage() {
       attentionDifficulties: attention,
       stage: 3,
     }));
-    window.location.href =
-      "https://app.prolific.com/submissions/complete?cc=CVM03WLM";
-  }, [feedback, attention, age, gender, adhd, setUser, user]);
+    navigate(ROUTES.THANK_YOU);
+  }, [feedback, attention, age, gender, adhd, setUser, user, navigate]);
 
   return (
     <Container maxWidth="xs" style={{ padding: "10px" }}>
